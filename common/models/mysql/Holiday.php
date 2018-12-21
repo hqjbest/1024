@@ -5,24 +5,23 @@ namespace common\models\mysql;
 use Yii;
 
 /**
- * This is the model class for table "adept".
+ * This is the model class for table "holiday".
  *
  * @property int $id
  * @property string $name
- * @property string $description
- * @property string $toptime
- * @property string $undertime
+ * @property int $first_time
+ * @property int $last_time
  * @property int $created_at
  * @property int $updated_at
  */
-class Adept extends \yii\db\ActiveRecord
+class Holiday extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'adept';
+        return 'holiday';
     }
 
     /**
@@ -31,11 +30,10 @@ class Adept extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'name'], 'required'],
-            [['id', 'created_at', 'updated_at'], 'integer'],
-            [['name'], 'string', 'max' => 32],
-            [['description'], 'string', 'max' => 256],
-            [['toptime', 'undertime'], 'string', 'max' => 5],
+            [['id'], 'required'],
+            [['id', 'first_time', 'last_time', 'created_at', 'updated_at'], 'integer'],
+            [['name'], 'string', 'max' => 256],
+            [['name'], 'unique'],
             [['id'], 'unique'],
         ];
     }
@@ -48,9 +46,8 @@ class Adept extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => '名称',
-            'description' => '说明',
-            'toptime' => '上班时间',
-            'undertime' => '下班时间',
+            'first_time' => '开始时间',
+            'last_time' => '结束时间',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];

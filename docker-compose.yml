@@ -1,9 +1,9 @@
 web:
     # build: ./docker/web
     image: hqjbest/php7.1-apache
-    container_name: 1024_web
+    container_name: 1024_web_w
     ports:
-        - "9980:80"
+        - "1980:80"
     expose:
         - "80"
     volumes:
@@ -11,7 +11,6 @@ web:
         - ./docker/web/vhosts/:/etc/apache2/sites-enabled/
     links:
         - mysql
-        - redis
     environment:
         - TERM=xterm-256color
     extra_hosts:
@@ -20,11 +19,11 @@ web:
 mysql:
     # build: ./docker/mysql
     image: mysql:5.6
-    container_name: 1024_mysql
+    container_name: 1024_mysql_w
     volumes:
         - ./docker/mysql:/docker-entrypoint-initdb.d
     ports:
-        - "9307:3306"
+        - "1807:3306"
     expose:
         - "3306"
     environment:
@@ -32,11 +31,3 @@ mysql:
         MYSQL_DATABASE: 1024
         MYSQL_USER: 1024
         MYSQL_PASSWORD: 1024
-redis:
-    # image: redis
-    image: redis:3.2
-    container_name: 1024_redis
-    ports:
-        - "9379:6379"
-    volumes:
-     - ./:/var/www/html/docker/web/

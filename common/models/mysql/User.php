@@ -39,7 +39,7 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
-            [['adept_id', 'status', 'join_time', 'created_at', 'updated_at'], 'integer'],
+            [['adept_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['username', 'auth_key'], 'string', 'max' => 32],
             [['sex'], 'string', 'max' => 2],
             [['password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],

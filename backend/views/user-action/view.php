@@ -4,17 +4,17 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\mysql\User */
+/* @var $model common\models\mysql\UserAction */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => '员工管理', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'User Actions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-view">
+<div class="user-action-view">
 
     <p>
-        <?= Html::a('更新', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('删除', ['delete', 'id' => $model->id], [
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -27,19 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'username',
-            [
-                'attribute' => 'adept_id',
-                'value' => \common\models\mysql\Adept::findOne($model->adept_id)->name
-            ],
-            'sex',
-            'number',
-            'email:email',
-            'phone',
-            [
-                'attribute' => 'join_time',
-                'value' => date("Y-m-d H:i:s", $model->join_time)
-            ],
+            'user_id',
+            'date',
+            'adept_id',
+            'first_time:datetime',
+            'last_time:datetime',
+            'status',
+            'description',
             [
                 'attribute' => 'updated_at',
                 'value' => date("Y-m-d H:i:s", $model->updated_at)

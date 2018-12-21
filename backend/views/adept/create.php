@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\mysql\User */
+/* @var $model common\models\mysql\Adept */
 
-$this->title = '新增员工';
-$this->params['breadcrumbs'][] = ['label' => '员工管理', 'url' => ['index']];
+$this->title = '新增';
+$this->params['breadcrumbs'][] = ['label' => '部门管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-create">
+<div class="adept-create">
 
     <?= $this->render('_form', [
         'model' => $model,

@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\mysql\User */
+/* @var $model common\models\mysql\Holiday */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => '员工管理', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => '节日管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-view">
+<div class="holiday-view">
 
     <p>
         <?= Html::a('更新', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -27,18 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'username',
+            'name',
             [
-                'attribute' => 'adept_id',
-                'value' => \common\models\mysql\Adept::findOne($model->adept_id)->name
+                'attribute' => 'first_time',
+                'value' => date("Y-m-d", strtotime($model->first_time))
             ],
-            'sex',
-            'number',
-            'email:email',
-            'phone',
             [
-                'attribute' => 'join_time',
-                'value' => date("Y-m-d H:i:s", $model->join_time)
+                'attribute' => 'last_time',
+                'value' => date("Y-m-d", strtotime($model->last_time))
             ],
             [
                 'attribute' => 'updated_at',
